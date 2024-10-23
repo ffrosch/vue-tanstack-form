@@ -2,6 +2,11 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+Examples:
+
+- <https://codesandbox.io/p/devbox/tanstack-form-example-vue-simple-gwwss4?file=%2Fsrc%2FApp.vue>
+- <https://codesandbox.io/p/devbox/little-smoke-6q94n7?file=%252Fsrc%252FApp.vue>
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
