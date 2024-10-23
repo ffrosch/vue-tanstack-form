@@ -48,8 +48,9 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
                 }"
             >
                 <template v-slot="{ field, state }">
-                    <label :htmlFor="field.name">Name (must not contain `error`): </label>
+                    <label :for="field.name">Name (must not contain `error`): </label>
                     <input
+                        :id="field.name"
                         :name="field.name"
                         :value="field.state.value"
                         @blur="field.handleBlur"
