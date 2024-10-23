@@ -35,7 +35,7 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
 
 <template>
     <form @submit.prevent.stop="form.handleSubmit">
-        <div class="flex flex-col w-25">
+        <div class="grid w-25">
             <h2 class="text-3xl">Personal Information</h2>
             <form.Field
                 name="name"
