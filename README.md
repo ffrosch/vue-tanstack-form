@@ -6,6 +6,10 @@ Examples:
 
 - <https://codesandbox.io/p/devbox/tanstack-form-example-vue-simple-gwwss4?file=%2Fsrc%2FApp.vue>
 - <https://codesandbox.io/p/devbox/little-smoke-6q94n7?file=%252Fsrc%252FApp.vue>
+- [zod](https://tanstack.com/form/latest/docs/framework/react/examples/zod)
+- [Form and Field validation](https://tanstack.com/form/latest/docs/framework/vue/guides/validation)
+- [useForm with zod and typescript](https://github.com/TanStack/form/discussions/589)
+- [form validation with tanstack and zod](https://medium.com/@bankoleidris/mastering-form-state-and-validation-with-tanstack-and-zod-0f3cb998c589)
 
 ## Recommended IDE Setup
 
