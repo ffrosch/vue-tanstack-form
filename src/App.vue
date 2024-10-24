@@ -5,11 +5,23 @@ import { zodValidator } from '@tanstack/zod-form-adapter';
 import { z } from 'zod';
 import FieldInfo from './components/FieldInfo.vue';
 
+const userSchema = z.object({
+    name: z.string().min(3, 'Name must be at least 3 characters'),
+    hobbies: z.array(
+        z.object({
+            name: z.string().min(3, 'Hobby name must be at least 3 characters'),
+            description: z.string(),
+        })
+    )
+});
+
+type User = z.infer<typeof userSchema>;
+
 const form = useForm({
     defaultValues: {
         name: '',
-        hobbies: [] as Array<{ name: string, description: string; }>,
-    },
+        hobbies: [],
+    } as User,
     onSubmit: async ({ value }) => {
         // Do something with form data
         console.log(value);
@@ -42,14 +54,19 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
                 :validators="{
                     onChange: z
                         .string()
-                        .min(3, 'First name must be at least 3 characters'),
+                        .min(3, 'Name must be at least 3 characters'),
                     onChangeAsyncDebounceMs: 500,
                     onChangeAsync: onChangeName,
                 }"
             >
                 <template v-slot="{ field, state }">
-                    <label :for="field.name">Name (must not contain `error`): </label>
+                    <label
+                        :for="field.name"
+                        class="form-label"
+                    >Name</label>
                     <input
+                        class="form-control"
+                        :aria-describedby="field.name + '-help'"
                         :id="field.name"
                         :name="field.name"
                         :value="field.state.value"
@@ -57,6 +74,10 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
                         @input="e => field.handleChange((e.target as HTMLInputElement).value)"
                     />
                     <FieldInfo :state="state" />
+                    <div
+                        :id="field.name + '-help'"
+                        class="form-text"
+                    >Must not contain the word "error"</div>
                     {{ field.state.value }}
                 </template>
             </form.Field>
@@ -86,8 +107,12 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
                                     <form.Field :name="`hobbies[${i}].name`">
                                         <template v-slot="{ field, state }">
                                             <div>
-                                                <label :for="field.name">Name:</label>
+                                                <label
+                                                    :for="field.name"
+                                                    class="form-label"
+                                                >Name</label>
                                                 <input
+                                                    class="form-control"
                                                     :id="field.name"
                                                     :name="field.name"
                                                     :value="field.state.value"
@@ -103,8 +128,12 @@ const buttonClass = "bg-violet-500 hover:bg-violet-600 focus:outline-none focus:
                                     <form.Field :name="`hobbies[${i}].description`">
                                         <template v-slot="{ field, state }">
                                             <div>
-                                                <label :for="field.name">Description:</label>
+                                                <label
+                                                    :for="field.name"
+                                                    class="form-label"
+                                                >Description</label>
                                                 <input
+                                                    class="form-control"
                                                     :id="field.name"
                                                     :name="field.name"
                                                     :value="field.state.value"
